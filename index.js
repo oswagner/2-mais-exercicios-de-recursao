@@ -108,3 +108,131 @@ console.log("isPal", isPal("ana"));
 console.log("isPal", isPal(""));
 console.log("isPal", isPal("reinnier"));
 console.log("isPal", isPal("uva"));
+
+
+// Situação de erro
+// n < 0 -> exception!
+// Situações de parada
+// n == 0 -> “0”
+// n == 1 -> “1”
+// n == 5 (101)
+// convBase2(10) + “1”
+// n == 6 (110)
+// convBase2(11) + “0”
+// n > 0 && n != 0 && n != 1 => convBase2(n/2) + (n % 2)
+// (*) + é a concatenação de strings
+
+// Ex.: n = 0 n = 1 n = 2 (10) n = 5 (101)
+// Modele e implemente um método recursivo que recebe um inteiro zero ou positivo e 
+// retorna um String com o número em binário.
+
+function convBase2(n) {
+  if (n < 0) {
+    return "inválido"
+  }
+  if (n == 0) {
+    return "0"
+  }
+  if (n == 1) {
+    return "1"
+  }
+  if (n > 0 && n != 0 && n != 1) {
+    return convBase2(Math.floor(n/2)).concat(`${n%2}`)
+  }
+}
+
+console.log("convBase2(-1)", convBase2(-1));
+console.log("convBase2(2)", convBase2(2));
+console.log("convBase2(3)", convBase2(3));
+console.log("convBase2(4)", convBase2(4));
+console.log("convBase2(5)", convBase2(5));
+
+
+
+// Modele e implemente um método recursivo que calcule o somatório dos números 
+// contidos em um ArrayList de inteiros, passado como parâmetro.
+/**
+ * Casos de Erro: list.length <= 0
+ * Casos Base: list.length = 1 -> list[0], list.length = 2 -> list[0] + list[1]
+ * Recursão: último elemento da lista + somatorioEmLista(lista.length - 1)
+ */
+
+ function somatorioEmLista(list) {
+   if (list.length <= 0) {
+      return "invalido"
+   }
+
+  if (list.length === 1) {
+    return list[0]
+  }
+  
+  return somatorioEmLista(list.splice(0, list.length - 1)) + list[list.length-1]
+}
+
+console.log("somatrioEmLista([])", somatorioEmLista([]));
+console.log("somatrioEmLista([1,2,3])", somatorioEmLista([1,2,3]));
+console.log("somatrioEmLista([1,2,3,4])", somatorioEmLista([1,2,3,4]));
+console.log("somatrioEmLista([-1,2,3,4])", somatorioEmLista([-1,2,3,4]));
+
+
+// Modele e implemente um método recursivo para encontrar o maior elemento de um ArrayList.
+/**
+ * Casos de Erro: list.length <= 0
+ * Casos Base: list.length = 1 -> list[0], list[0] > list[n-1]
+ * Recursão: list[0] >= list[n-1], se verdadeiro remove último elemento, se falso remove o primeiro
+ *           list[0] >= list[n-1], se verdadeiro findBiggest(list[list.length-1])
+ *                                 se false findBiggest(list[list.length - n)
+ */
+function findBiggest(list) {
+  if (list.length <= 0) {
+    return "invalido"
+  }
+
+  if (list.length == 1) {
+    return list[0]
+  }
+
+  if(list[0] >= list[list.length - 1]) { 
+    return findBiggest(list.splice(0, list.length - 1))
+  } else { 
+    return findBiggest(list.splice(1, list.length - 1))
+  }
+}
+
+console.log("findBiggest([1,3,5,4])", findBiggest([1,3,5,4]));
+console.log("findBiggest[7,3,5,4])", findBiggest([7,3,5,4]));
+console.log("findBiggest([])", findBiggest([]));
+console.log("findBiggest([-1, 4, -3,-2])", findBiggest([-1, 4, -3,-2]));
+console.log("findBiggest([7,-2,23,40])", findBiggest([7,-2,23,40]));
+console.log("findBiggest([70,-20,23,10])", findBiggest([70,-20,23,10]));
+
+
+// Implemente um método recursivo para determinar se um string ocorre dentro de outro.
+/**
+ * Casos de Erro: str == null / match == null / match > str
+ * Casos Base: str = "a", match = "a" / 
+ * Recursão:
+ */
+function findSubStr(str, match) {
+
+}
+
+// Faça um método recursivo que determina o número de dígitos de um inteiro.
+/**
+ * Casos de Erro:
+ * Casos Base:
+ * Recursão:
+ */
+function nroDigit(n) {
+  return 0
+}
+
+// Implemente um métodos que recebe um String e retorna um ArrayList com todas as permutações deste String.
+/**
+ * Casos de Erro:
+ * Casos Base:
+ * Recursão:
+ */
+function permutations(s) {
+  return []
+}
